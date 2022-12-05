@@ -114,7 +114,7 @@ namespace testing
                     Console.WriteLine("Your level is Middle");
                 }
                 else
-                {//
+                {
                     if (percent >= 50 && percent < 75)
                     {
                         Console.WriteLine("Your level is Regular");
