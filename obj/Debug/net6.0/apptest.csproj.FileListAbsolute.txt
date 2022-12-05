@@ -1,0 +1,15 @@
+E:\$Quark\apptest\bin\Debug\net6.0\apptest.exe
+E:\$Quark\apptest\bin\Debug\net6.0\apptest.deps.json
+E:\$Quark\apptest\bin\Debug\net6.0\apptest.runtimeconfig.json
+E:\$Quark\apptest\bin\Debug\net6.0\apptest.dll
+E:\$Quark\apptest\bin\Debug\net6.0\apptest.pdb
+E:\$Quark\apptest\obj\Debug\net6.0\apptest.csproj.AssemblyReference.cache
+E:\$Quark\apptest\obj\Debug\net6.0\apptest.GeneratedMSBuildEditorConfig.editorconfig
+E:\$Quark\apptest\obj\Debug\net6.0\apptest.AssemblyInfoInputs.cache
+E:\$Quark\apptest\obj\Debug\net6.0\apptest.AssemblyInfo.cs
+E:\$Quark\apptest\obj\Debug\net6.0\apptest.csproj.CoreCompileInputs.cache
+E:\$Quark\apptest\obj\Debug\net6.0\apptest.dll
+E:\$Quark\apptest\obj\Debug\net6.0\refint\apptest.dll
+E:\$Quark\apptest\obj\Debug\net6.0\apptest.pdb
+E:\$Quark\apptest\obj\Debug\net6.0\apptest.genruntimeconfig.cache
+E:\$Quark\apptest\obj\Debug\net6.0\ref\apptest.dll
