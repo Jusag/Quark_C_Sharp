@@ -6,7 +6,7 @@ namespace testing
     {
         static void Main(string[] args)
         {
-            page_20_1 auxC = new page_20_1(); //Change CLASS for the number of the exercise
+            page_21_1 auxC = new page_21_1(); //Change CLASS for the number of the exercise
             auxC.exercise();
         }
     }
@@ -259,14 +259,14 @@ namespace testing
             {
                 Console.Write("Enter the country name: ");
                 countrys[i] = Console.ReadLine();
-                Console.Write("Enter the population of: " + countrys[i]+": ");
+                Console.Write("Enter the population of: " + countrys[i] + ": ");
                 auxControlString = Console.ReadLine();
                 population[i] = int.Parse(auxControlString);
             }
             //Name Control
             for (int i = 0; i < countrys.Length; i++)
             {
-                for (int j = 0; j < countrys.Length - i ; j++)
+                for (int j = 0; j < countrys.Length - i; j++)
                 {
                     if (j < countrys.Length - 1)
                     {
@@ -290,7 +290,7 @@ namespace testing
             Console.WriteLine();
             for (int i = 0; i < countrys.Length; i++)
             {
-                for (int j = 0; j < countrys.Length - i ; j++)
+                for (int j = 0; j < countrys.Length - i; j++)
                 {
                     if (j < countrys.Length - 1)
                     {
@@ -310,10 +310,42 @@ namespace testing
             for (int i = 0; i < countrys.Length; i++)
             {
                 Console.Write(countrys[i] + " ");
+
             }
         }
     }
 
-
+    class page_21_1
+    {
+        private int[,] matriz;
+        public page_21_1()
+        {
+            matriz = new int[2, 5];
+        }
+        public void exercise()
+        {
+            //Console.WriteLine(matriz.GetLength(0));
+            //Console.WriteLine(matriz.GetLength(1));
+            Console.WriteLine("Enter values for the matriz 2x5");
+            string auxControlstringEntered;
+            for (int y = 0; y < matriz.GetLength(1); y++)
+            {
+                for (int x = 0; x < matriz.GetLength(0); x++)
+                {
+                    auxControlstringEntered = Console.ReadLine();
+                    matriz[x, y] = int.Parse(auxControlstringEntered);
+                }
+            }
+            Console.WriteLine("The Matriz is...");
+            for (int x = 0; x < matriz.GetLength(0); x++)
+            {
+                for (int y = 0; y < matriz.GetLength(1); y++)
+                {
+                    Console.Write(matriz[x, y] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
 
 }
