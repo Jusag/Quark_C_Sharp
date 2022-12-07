@@ -6,7 +6,7 @@ namespace testing
     {
         static void Main(string[] args)
         {
-            page_21_1 auxC = new page_21_1(); //Change CLASS for the number of the exercise
+            page_23_1 auxC = new page_23_1(); //Change CLASS for the number of the exercise
             auxC.exercise();
         }
     }
@@ -17,8 +17,8 @@ namespace testing
             Console.WriteLine("Hello, World!");
         }
     }
-    /*
-    class page_6_3
+    /* Template for exercises
+    class page_X_x
     {
         public void exercise()
         {
@@ -326,7 +326,7 @@ namespace testing
         {
             //Console.WriteLine(matriz.GetLength(0));
             //Console.WriteLine(matriz.GetLength(1));
-            Console.WriteLine("Enter values for the matriz 2x5");
+            Console.WriteLine("Enter values for the matrix 2x5");
             string auxControlstringEntered;
             for (int y = 0; y < matriz.GetLength(1); y++)
             {
@@ -336,7 +336,7 @@ namespace testing
                     matriz[x, y] = int.Parse(auxControlstringEntered);
                 }
             }
-            Console.WriteLine("The Matriz is...");
+            Console.WriteLine("The Matrix is...");
             for (int x = 0; x < matriz.GetLength(0); x++)
             {
                 for (int y = 0; y < matriz.GetLength(1); y++)
@@ -348,4 +348,79 @@ namespace testing
         }
     }
 
+    /*
+    Se desea saber la temperatura media trimestral de cuatro paises. Para ello se tiene como dato las temperaturas medias mensuales de dichos paises.
+    Se debe ingresar el nombre del país y seguidamente las tres temperaturas medias mensuales.
+    Seleccionar las estructuras de datos adecuadas para el almacenamiento de los datos en memoria.
+    * a - Cargar por teclado los nombres de los paises y las temperaturas medias mensuales.
+    * b - Imprimir los nombres de las paises y las temperaturas medias mensuales de las mismas.
+    * c - Calcular la temperatura media trimestral de cada país.
+    * d - Imprimir los nombres de los paises y las temperaturas medias trimestrales.
+    e - Imprimir el nombre del país con la temperatura media trimestral mayor.
+    */
+
+    class page_23_1
+    {
+        private string[] country;
+        private float[,] temperature;
+        private float[] averageTemperature;
+
+        public page_23_1()
+        {
+            country = new string[4];
+            temperature = new float[4, 3];
+            averageTemperature = new float[4];
+            for (int i = 0; i < averageTemperature.Length; i++)
+            {
+                averageTemperature[i] = 0;
+            }
+        }
+        public void exercise()
+        {
+            string auxControlstringEntered;
+            for (int c = 0; c < country.Length; c++)
+            {
+                Console.WriteLine("Enter Country name:");
+                country[c] = Console.ReadLine();
+                for (int t = 0; t < temperature.GetLength(1); t++)
+                {
+                    Console.WriteLine("Enter " + (t + 1) + "° " + "temperature");
+                    auxControlstringEntered = Console.ReadLine();
+                    temperature[c, t] = int.Parse(auxControlstringEntered);
+                    averageTemperature[c] += temperature[c, t];
+                }
+                averageTemperature[c] = averageTemperature[c] / 3f;
+            }
+            //all temperatures 
+            for (int c = 0; c < country.Length; c++)
+            {
+                Console.WriteLine("The country " + country[c] + " has this temperatures ");
+                for (int t = 0; t < temperature.GetLength(1); t++)
+                {
+                    Console.Write(temperature[c, t] + " ");
+                }
+                Console.WriteLine();
+            }
+            //average temperature
+            for (int c = 0; c < country.Length; c++)
+            {
+                Console.WriteLine("The country " + country[c] + " has " + averageTemperature[c] + " average temperature");
+            }
+            //the country with the most average temperature
+            float tempControl = 0;
+            int countryIndex = 0;
+            for (int i = 0; i < country.Length; i++)
+            {
+                for (int j = 0; j < country.Length - i; j++)
+                {
+                    if (averageTemperature[j] > tempControl)
+                    {
+                        tempControl = averageTemperature[j];
+                        countryIndex = j;
+                    }
+                }
+            }
+            Console.WriteLine("The country " + country[countryIndex] + " has the most average temperature and is " + averageTemperature[countryIndex]);
+        }
+    }
 }
