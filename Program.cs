@@ -6,7 +6,7 @@ namespace testing
     {
         static void Main(string[] args)
         {
-            page_23_1 auxC = new page_23_1(); //Change CLASS for the number of the exercise
+            page_29_1 auxC = new page_29_1(); //Change CLASS for the number of the exercise
             auxC.exercise();
         }
     }
@@ -423,4 +423,128 @@ namespace testing
             Console.WriteLine("The country " + country[countryIndex] + " has the most average temperature and is " + averageTemperature[countryIndex]);
         }
     }
+
+    class page_26_1
+    {
+        public void exercise()
+        {
+            club nuevoClub = new club();
+            string auxControlStringName, auxControlStringAntiquity;
+            for (int i = 0; i < 3; i++)
+            {
+                Console.WriteLine("Enter the name of member " + (i + 1));
+                auxControlStringName = Console.ReadLine();
+                Console.WriteLine("Enter the antiquity of member " + (i + 1));
+                auxControlStringAntiquity = Console.ReadLine();
+                club_member auxMember = new club_member(auxControlStringName, int.Parse(auxControlStringAntiquity));
+                nuevoClub.addMember(auxMember);
+            }
+            nuevoClub.printAllMembers();
+            Console.WriteLine(); Console.WriteLine();
+            nuevoClub.moreAntiquity();
+        }
+        class club
+        {
+            private club_member[] members;
+            public club()
+            {
+                members = new club_member[3];
+            }
+            public void addMember(club_member auxClub_Member)
+            {
+                bool added = false;
+                for (int i = 0; i < members.Length; i++)
+                {
+                    if (added == false && members[i] == null)
+                    {
+                        members[i] = auxClub_Member;
+                        added = true;
+                    }
+                }
+            }
+            public void printAllMembers()
+            {
+                for (int i = 0; i < members.Length; i++)
+                {
+                    Console.WriteLine("Member " + (i + 1) + "°" + " the name is " + members[i].memberName() + " and antiquity is " + members[i].memberAntiquity());
+                }
+            }
+            public void moreAntiquity()
+            {
+                int auxAntiquityControl = 0;
+                int auxAntiquityIndex = 0;
+                for (int i = 0; i < members.Length; i++)
+                {
+                    if (auxAntiquityControl < members[i].memberAntiquity())
+                    {
+                        auxAntiquityIndex = i;
+                    }
+                }
+                Console.WriteLine("The member with more antiquity is " + members[auxAntiquityIndex].memberName() + " with " + members[auxAntiquityIndex].memberAntiquity() + " years");
+                
+                //Testing getter setter
+                //members[0].Antiquity = 20;
+                //Console.WriteLine(members[0].Antiquity);
+                
+            }
+        }
+        class club_member
+        {
+            private string name;
+            private int antiquity;
+            public club_member(string name, int antiquity)
+            {
+                this.name = name;
+                this.antiquity = antiquity;
+            }
+            public string memberName()
+            {
+                return name;
+            }
+            public int memberAntiquity()
+            {
+                return antiquity;
+            }
+            public int Antiquity
+            {
+                set
+                {
+                    antiquity = value;
+                }
+                get
+                {
+                    return antiquity;
+                }
+            }
+        }
+    }
+    class page_29_1
+    {
+        public void exercise()
+        {
+            C aux = new C();
+        }
+        class A
+        {
+            public A()
+            {
+                Console.WriteLine("We are in A");
+            }
+        }
+        class B:A
+        {
+            public B()
+            {
+                Console.WriteLine("We are in B");
+            }
+        }
+        class C:B
+        {
+            public C()
+            {
+                Console.WriteLine("We are in C");
+            }
+        }
+    }
+
 }
