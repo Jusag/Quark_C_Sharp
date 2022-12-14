@@ -6,15 +6,8 @@ namespace testing
     {
         static void Main(string[] args)
         {
-            page_29_1 auxC = new page_29_1(); //Change CLASS for the number of the exercise
+            page_45_1 auxC = new page_45_1(); //Change CLASS for the number of the exercise
             auxC.exercise();
-        }
-    }
-    class firstExample
-    {
-        public void exercise()
-        {
-            Console.WriteLine("Hello, World!");
         }
     }
     /* Template for exercises
@@ -26,6 +19,13 @@ namespace testing
         }
     }
     */
+    class firstExample
+    {
+        public void exercise()
+        {
+            Console.WriteLine("Hello, World!");
+        }
+    }
 
     class page_5_1
     {
@@ -92,7 +92,6 @@ namespace testing
             }
         }
     }
-
     class page_7_4
     {
         public void exercise()
@@ -481,11 +480,11 @@ namespace testing
                     }
                 }
                 Console.WriteLine("The member with more antiquity is " + members[auxAntiquityIndex].memberName() + " with " + members[auxAntiquityIndex].memberAntiquity() + " years");
-                
+
                 //Testing getter setter
                 //members[0].Antiquity = 20;
                 //Console.WriteLine(members[0].Antiquity);
-                
+
             }
         }
         class club_member
@@ -518,7 +517,7 @@ namespace testing
             }
         }
     }
-    class page_29_1
+    class page_29_1 //Herencia - inheritance
     {
         public void exercise()
         {
@@ -531,14 +530,14 @@ namespace testing
                 Console.WriteLine("We are in A");
             }
         }
-        class B:A
+        class B : A
         {
             public B()
             {
                 Console.WriteLine("We are in B");
             }
         }
-        class C:B
+        class C : B
         {
             public C()
             {
@@ -547,4 +546,152 @@ namespace testing
         }
     }
 
+    class page_43_1
+    {
+        public void exercise()
+        {
+            Stack newStack = new Stack();
+             newStack.addNode(8);
+            newStack.addNode(3);
+            newStack.addNode(9);
+            newStack.addNode(1);
+            newStack.printStack();
+            newStack.extractNode();
+            newStack.printStack();
+        }
+
+        class Stack
+        {
+            class Node
+            {
+                public int value;
+                public Node next;
+            }
+
+            private Node node;
+
+            public Stack()
+            {
+                node = null;
+            }
+
+            public void addNode(int x)
+            {
+                Node auxNode = new Node();
+                auxNode.value = x;
+                if (node == null)
+                {
+                    auxNode.next = null;
+                    node = auxNode;
+                }
+                else
+                {
+                    auxNode.next = node;
+                    node = auxNode;
+                }
+            }
+            public int extractNode()
+            {
+                int info;
+
+                if (node != null)
+                {
+                    info = node.value;
+                    node = node.next;
+                    return info;
+                }
+                else
+                {
+                    return int.MaxValue;
+                }
+            }
+            public void printStack()
+            {
+                while (node != null)
+                {
+                    Console.Write(node.value + " ");
+                    extractNode();
+                }
+                Console.WriteLine(" This is all values");
+            }
+        }
+    }
+
+    class page_45_1
+    {
+        public void exercise()
+        {
+            Stack newStack = new Stack();
+            newStack.addNode(8);
+            newStack.addNode(3);
+            newStack.addNode(9);
+            newStack.addNode(1);
+            newStack.printStack();
+            newStack.extractNode();
+            newStack.printStack();
+        }
+        class Stack
+        {
+            class Node
+            {
+                public int value;
+                public Node next;
+            }
+
+            private Node rooting, last;
+
+            public Stack()
+            {
+                rooting = null;
+                last = null;
+            }
+            
+            public void addNode(int x)
+            {
+                Node newNode = new Node();
+                newNode.value = x;
+                newNode.next = null;
+                if(rooting == null) 
+                {
+                    rooting=newNode;
+                    last = newNode;
+                }
+                else
+                { 
+                    last.next = newNode;
+                    last = newNode;
+                }
+            }
+            
+            public int extractNode()
+            { 
+                if(emptyStack())
+                { 
+                    return int.MaxValue;
+                }
+                else
+                { 
+                    int auxControl = rooting.value;
+                    rooting = rooting.next;
+                    return auxControl;
+                }
+            }
+            
+            public void printStack()
+            { 
+                Node auxControl = rooting;
+                while(auxControl != null) 
+                {
+                    Console.Write(auxControl.value+" ");
+                    auxControl = auxControl.next;
+                }
+                Console.WriteLine();
+            }
+            
+            public bool emptyStack()
+            { 
+                return rooting == null;
+            }
+        }
+    }
 }
