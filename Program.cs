@@ -700,15 +700,14 @@ namespace testing
         public void exercise()
         {
             Stack newStack = new Stack();
-            newStack.addNode(0,8);
-            newStack.addNode(1,3);
-            newStack.addNode(5,9);
-            newStack.addNode(3,1);
+            newStack.addNode(0, 8);
+            newStack.addNode(1, 3);
+            newStack.addNode(5, 9);
+            newStack.addNode(3, 1);
             newStack.printStack();
             newStack.extractNode(2);
             newStack.printStack();
         }
-
 
         class Stack
         {
@@ -754,10 +753,10 @@ namespace testing
                                     auxNodeNew.nextNode = auxNodeIndex.nextNode;
                                     auxNodeIndex.nextNode = auxNodeNew;
                                 }
-                                    if (i != 0)
-                                    {
-                                        auxNodeIndex = auxNodeIndex.nextNode;
-                                    }
+                                if (i != 0)
+                                {
+                                    auxNodeIndex = auxNodeIndex.nextNode;
+                                }
                             }
                         }
                     }
@@ -831,9 +830,10 @@ namespace testing
                 return totalLenght;
             }
 
-
-
-
+            public bool empty()
+            {
+                return rooting == null;
+            }
         }
     }
 }
