@@ -6,7 +6,7 @@ namespace testing
     {
         static void Main(string[] args)
         {
-            page_47_1 auxC = new page_47_1(); //Change CLASS for the number of the exercise
+            page_49_1 auxC = new page_49_1(); //Change CLASS for the number of the exercise
             auxC.exercise();
         }
     }
@@ -833,6 +833,187 @@ namespace testing
             public bool empty()
             {
                 return rooting == null;
+            }
+        }
+    }
+
+
+    class page_49_1
+    {
+        public void exercise()
+        {
+            Stack newStack = new Stack();
+            newStack.addNode(0, 8);
+            newStack.addNode(1, 3);
+            newStack.addNode(5, 9);
+            newStack.addNode(3, 1);
+            newStack.printStack();
+            newStack.extractNode(2);
+            newStack.printStack();
+        }
+        public class Stack
+        {
+            public class Node
+            {
+                public int value;
+                public Node back, next;
+                public Node()
+                {
+                    back = null;
+                    next = null;
+                    //value it's unassigned
+                }
+            }
+
+            private Node rooting;
+
+            public Stack()
+            {
+                rooting = null;
+            }
+
+            public void addNode(int position, int value)
+            {
+                Node auxNewNode = new Node();
+                auxNewNode.value = value;
+                
+                Node auxIndexNode = rooting;
+
+                if (emptyStack())
+                {
+                    rooting = auxNewNode;
+                }
+                else
+                {
+                    if (position == 0)
+                    {
+                        auxNewNode.next = rooting;
+                        rooting.back = auxNewNode;
+                        rooting = auxNewNode;
+                    }
+                    else
+                    {
+                        if (position > stackLenght())   //if position it's wrong
+                        {
+                            Console.WriteLine("It's over the actual lenght, we add to last...");
+
+                            while (auxIndexNode.next != null)
+                            {
+                                auxIndexNode = auxIndexNode.next;
+                            }
+                            auxNewNode.back = auxIndexNode;
+                            auxIndexNode.next = auxNewNode;
+                            //In case it's the last Node.next = rooting and in the case doble rooting.back = Node.next 
+                        }
+                        else
+                        {
+                            for (int i = 0; i < stackLenght(); i++)
+                            {
+                                if (i == position)
+                                {
+                                    auxNewNode.next = auxIndexNode;
+                                    auxNewNode.back = auxIndexNode.back;
+                                    auxIndexNode.back = auxNewNode;
+                                    auxNewNode.back.next = auxNewNode;
+                                }
+                                else
+                                {
+                                    auxIndexNode = auxIndexNode.next;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            public int extractNode(int position) 
+            {
+                int value = int.MinValue;
+                Node auxNodeIndex = rooting;
+                if (!emptyStack() && position < stackLenght()) 
+                {
+                    for (int i = 0; i < stackLenght(); i++) 
+                    {
+                        if (i == position)
+                        {
+                            value = auxNodeIndex.value;
+                            Node auxNodeBack = auxNodeIndex.back;
+                            auxNodeBack.next = auxNodeIndex.next;
+                        }
+                        else 
+                        { 
+                            auxNodeIndex = auxNodeIndex.next; 
+                        }
+                    }
+                }
+                return value; 
+            }
+            public void deleteNode(int position) 
+            {
+                Node auxNodeIndex = rooting;
+                if (!emptyStack() && position < stackLenght())
+                {
+                    for (int i = 0; i < stackLenght(); i++)
+                    {
+                        if (i == position)
+                        {
+                            auxNodeIndex.back.next = auxNodeIndex.next;
+                            auxNodeIndex.next.back = auxNodeIndex.back;
+                        }
+                        else
+                        {
+                            auxNodeIndex = auxNodeIndex.next;
+                        }
+                    }
+                }
+            }
+            public void swapNodes(int positionOne, int positionTwo) { }
+            public int maxValueOnStack() { return 1; }
+            public int maxPositionWithMaxValue() { return 1; }
+            
+            public int stackLenght() {
+                int counter = 0;
+                Node auxNodeIndex = rooting;
+                while (auxNodeIndex != null)
+                {
+                    counter++;
+                    auxNodeIndex = auxNodeIndex.next;
+                }                    
+                return counter;
+            }
+
+            public bool existValueInNode(int x) {
+                bool exist = false;
+                Node auxNodeIndex = rooting;
+                while (auxNodeIndex != null && exist == false) 
+                {
+                    if (auxNodeIndex.value == x)
+                    {
+                        exist = true;
+                    }
+                    else 
+                    { 
+                        auxNodeIndex = auxNodeIndex.next;
+                    }
+                }
+                return exist; 
+            }
+
+            
+            public bool emptyStack()
+            { 
+                return rooting == null;
+            }
+            
+            public void printStack() 
+            {
+                Node auxNodeIndex = rooting;
+                while (auxNodeIndex != null) 
+                {
+                    Console.Write(auxNodeIndex.value + " ");
+                    auxNodeIndex = auxNodeIndex.next;
+                }
+                Console.WriteLine();
             }
         }
     }
