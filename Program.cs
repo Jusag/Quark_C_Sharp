@@ -6,7 +6,7 @@ namespace testing
     {
         static void Main(string[] args)
         {
-            page_51_1 auxC = new page_51_1(); //Change CLASS for the number of the exercise
+            page_52_1 auxC = new page_52_1(); //Change CLASS for the number of the exercise
             auxC.exercise();
         }
     }
@@ -1123,12 +1123,12 @@ namespace testing
         public void exercise()
         {
             recursion auxRecursion = new recursion();
-            Console.WriteLine("Factor of 10 is : "+auxRecursion.factorial(10));
+            Console.WriteLine("Factor of 10 is : " + auxRecursion.factorial(10));
         }
 
         class recursion
         {
-            public int factorial(int value) 
+            public int factorial(int value)
             {
                 int aux = 1;
                 if (value > 0)
@@ -1140,4 +1140,98 @@ namespace testing
             }
         }
     }
+
+    class page_52_1
+    {
+        public void exercise()
+        {
+            Stack newStack = new Stack();
+            newStack.addNode(8);
+            newStack.addNode(3);
+            newStack.addNode(9);
+            newStack.addNode(1);
+            newStack.addNode(55);
+            newStack.addNode(100);
+            newStack.addNode(7);
+            newStack.addNode(84);
+            Node auxNode = newStack.localNodeReturn();
+            newStack.printStack();
+            newStack.recurReversePrint(auxNode);
+        }
+
+        class Node
+        {
+            public int value;
+            public Node next;
+        }
+
+        class Stack
+        {
+            private Node node;
+
+            public Stack()
+            {
+                node = null;
+            }
+
+            public void addNode(int x)
+            {
+                Node auxNode = new Node();
+                auxNode.value = x;
+                if (node == null)
+                {
+                    auxNode.next = null;
+                    node = auxNode;
+                }
+                else
+                {
+                    auxNode.next = node;
+                    node = auxNode;
+                }
+            }
+
+            public int extractNode()
+            {
+                int info;
+
+                if (node != null)
+                {
+                    info = node.value;
+                    node = node.next;
+                    return info;
+                }
+                else
+                {
+                    return int.MaxValue;
+                }
+            }
+
+            public void recurReversePrint(Node reco)
+            {
+                if (reco.next != null)
+                {
+                    recurReversePrint(reco.next);
+                }
+                Console.Write(reco.value + " ");
+            }
+
+            public Node localNodeReturn()
+            {
+                return node;
+            }
+
+            public void printStack()
+            {
+                while (node != null)
+                {
+                    Console.Write(node.value + " ");
+                    extractNode();
+                }
+                Console.WriteLine(" This is all values");
+            }
+        }
+    }
+
+
+
 }
